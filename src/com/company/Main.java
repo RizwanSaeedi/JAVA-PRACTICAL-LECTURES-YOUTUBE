@@ -2,24 +2,37 @@ package com.company;
 
 public class Main
 {
-
     public static void main(String[] args)
     {
 
         String subjects[] = {"CS 101", "MTH 101", "MGT 101"};
 
-        int marks[] = {5, 10, 5};
-        System.out.println("Subjects : Marks");
+        int marks[] = {50, 30, 66};
 
-        int answer = getAverage(marks);
-        System.out.println(answer);
+        String[] results = getResults(subjects, marks);
 
-        //for (int i = 0; i < 3; i++)
-        //{
-            //System.out.println(subjects[i] + " : " + marks[i]);
-        //}
+        for (int i = 0; i < results.length; i++)
+        {
+            System.out.println(results[i]);
+        }
 
+    }
 
+    static String[] getResults(String subject[], int marks[])
+    {
+        String results[] = new String[3];
+
+        for (int i = 0; i < subject.length; i++)
+        {
+            if (marks[i] < 40)
+            {
+                results[i] = "Student is Fail In : " + subject[i] + " Due To Marks : " + marks[i];
+            } else
+            {
+                results[i] = "Student is Pass In : " + subject[i];
+            }
+        }
+        return results;
     }
 
     static int getSum(int marks[])
@@ -32,10 +45,11 @@ public class Main
         return sum;
     }
 
-    static int getAverage(int marks[]){
+    static int getAverage(int marks[])
+    {
         int average = 0;
         int sum = getSum(marks);
         average = sum / marks.length;
-        return  average;
+        return average;
     }
 }
